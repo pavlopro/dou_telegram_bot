@@ -1,7 +1,7 @@
 import telebot
 import os
 from pytz import utc
-from config import TOKEN
+from config import TOKEN, DATABASELINK
 from flask import Flask, request
 from parcer import get_vacancy_list, get_artickle_list
 from dbdriver import cursor, connection
@@ -11,8 +11,6 @@ from apscheduler.executors.pool import ProcessPoolExecutor
 from navigation import navigate_menu, menu, main_menu, cities, cities_menu, pro_tech, pro_tech_menu, experience, \
     experience_menu, start_menu, vacancy_add_menu, vacancy_del_menu, to_main_menu, head_menu, subscription_del_menu
 from utils import create_url
-
-DATABASELINK = os.environ.get("DATABASE_URL")
 
 jobstores = {
     'default': SQLAlchemyJobStore(url=DATABASELINK,
