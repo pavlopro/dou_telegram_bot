@@ -65,15 +65,18 @@ def welcome(message):
                       f"які реалізовані в розділі «Вакансії».</i>\n\n" \
                       f"<i>Отож не зволікай! Мерщій клікай та обирай свою найкращу вакансію!</i>"
 
-    cursor.execute("""INSERT INTO users (chat_id, user_id, state, pro_lang, exp, city) 
-                        VALUES (%s, %s, Null, Null, Null, Null)
+    cursor.execute("""INSERT INTO users (chat_id, user_id, state, pro_lang, exp, city, first_name, last_name) 
+                        VALUES (%s, %s, Null, Null, Null, Null, %s, %s)
                         ON CONFLICT (user_id) DO UPDATE SET 
                         chat_id = %s,
                         user_id = %s,
                         state = Null,
                         pro_lang = Null,
                         exp = Null,
-                        city = NUll""", (message.chat.id, message.from_user.id, message.chat.id, message.from_user.id))
+                        city = NUll,
+                        first_name = %s,
+                        last_name = %s""", (message.chat.id, message.from_user.id, message.chat.first_name, message.chat.last_name,
+                                            message.chat.id, message.from_user.id, message.chat.first_name, message.chat.last_name))
     connection.commit()
 
     return bot.send_message(message.chat.id, welcome_message, parse_mode='html', reply_markup=main_menu)
