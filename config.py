@@ -1,2 +1,3 @@
+import os
 TOKEN = "1069547218:AAG0C10lHxb3EAcX0GqSXHMUuN4tqptNmhE"
 DATABASELINK = os.environ.get("DATABASE_URL")

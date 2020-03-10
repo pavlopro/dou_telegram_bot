@@ -1,6 +1,5 @@
 import dj_database_url
 import psycopg2
-import os
 from config import DATABASELINK
 
 db_info = dj_database_url.config(default=DATABASELINK)
