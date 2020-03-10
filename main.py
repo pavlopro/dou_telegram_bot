@@ -125,8 +125,8 @@ def message_handler_with_data(message, result):
             bot.send_message(message.chat.id, "У вас немає обраних вакансій", parse_mode='html', reply_markup=to_main_menu)
         else:
             for vacancy in result:
-                message = f"<a href='{vacancy[0]}'>{vacancy[1]}</a>"
-                bot.send_message(message.chat.id, message, parse_mode='html', reply_markup=vacancy_del_menu)
+                text_msg = f"<a href='{vacancy[0]}'>{vacancy[1]}</a>"
+                bot.send_message(message.chat.id, text_msg, parse_mode='html', reply_markup=vacancy_del_menu)
             bot.send_message(message.chat.id, '‎', parse_mode='html', reply_markup=to_main_menu)
 
     elif message.text == 'Стрічка':
@@ -138,8 +138,8 @@ def message_handler_with_data(message, result):
         article_list = get_artickle_list('https://dou.ua/lenta/')
         if article_list:
             for article in article_list:
-                message = f"<a href='{article[0]}'>{article[1].strip()}</a>"
-                bot.send_message(message.chat.id, message, parse_mode='html')
+                text_msg = f"<a href='{article[0]}'>{article[1].strip()}</a>"
+                bot.send_message(message.chat.id, text_msg, parse_mode='html')
 
         bot.send_message(message.chat.id, '‎', parse_mode='html', reply_markup=to_main_menu)
 
@@ -295,7 +295,8 @@ def message_handler_with_data(message, result):
                              parse_mode='html', reply_markup=navigate_menu)
         else:
             for link in vacancy_links:
-                bot.send_message(message.chat.id, f"<a href='{link[2]}'>{link[0]} в {link[1]}</a>", parse_mode='html',
+                text_msg = f"<a href='{link[2]}'>{link[0]} в {link[1]}</a>"
+                bot.send_message(message.chat.id, text_msg, parse_mode='html',
                                  reply_markup=vacancy_add_menu, disable_notification=True)
             bot.send_message(message.chat.id, "‎", parse_mode='html',
                              reply_markup=navigate_menu)
