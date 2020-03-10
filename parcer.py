@@ -31,7 +31,7 @@ def get_artickle_list(url):
     articles = soup.find_all('h2', class_='title')
     article_links = [(article.find('a').get('href'), article.text) for article in articles]
     article_links.reverse()
-    # article_links = list(islice(article_links, 5))
+    article_links = list(islice(article_links, 3))
     return article_links
 
 
